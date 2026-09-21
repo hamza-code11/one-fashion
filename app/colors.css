@@ -1,0 +1,54 @@
+:root {
+  /* ========================================
+     BRAND COLORS
+  ======================================== */
+
+  --color-purple: #3c0f82;
+  --color-purple-light: #7d78ad;
+
+  --color-green: #0b4c0c;
+  --color-olive: #594f07;
+
+  --color-orange: #b65c33;
+  --color-brown: #6e3621;
+
+  --color-cream: #dacec4;
+  --color-dark-brown: #211712;
+
+  --color-gray: #5d5d63;
+
+
+  /* ========================================
+     BASE / THEME COLORS
+  ======================================== */
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-background: #ffffff;
+  --color-surface: #ffffff;
+
+  --color-text-primary: #000000;
+  --color-text-secondary: #5d5d63;
+  --color-text-muted: #7a7a7a;
+
+  --color-border: #e5e5e5;
+
+
+  /* ========================================
+     COMPONENT COLORS
+  ======================================== */
+
+  --color-button-primary: #000000;
+  --color-button-primary-hover: #3c0f82;
+
+  --color-button-secondary: #3c0f82;
+  --color-button-secondary-hover: #2d0963;
+
+  --color-card-background: #ffffff;
+
+  --color-card-border: #e8e8e8;
+
+  --color-announcement-bar: #000000;
+}
+

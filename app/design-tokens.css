@@ -1,0 +1,122 @@
+/* 1. Google Font Import (Hamesha Sabse Upar) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* 2. Local Font Declaration (Root level par, :root ke bahar) */
+@font-face {
+   font-family: 'Bauhaus 93';
+   src: url('/fonts/bauhaus93.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+   font-display: swap;
+}
+
+/* 3. Root Variables (Sirf Variables Honge) */
+:root {
+   /* ========================================
+      FONT FAMILY
+   ======================================== */
+   --font-display: 'Bauhaus 93', cursive, sans-serif;
+   --font-heading: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+   --font-body: 'Poppins', sans-serif;
+
+   /* ========================================
+      FONT SIZE
+   ======================================== */
+   --text-xs: 0.75rem;
+   /* 12px */
+   --text-sm: 0.875rem;
+   /* 14px */
+   --text-base: 1rem;
+   /* 16px */
+   --text-lg: 1.125rem;
+   /* 18px */
+   --text-xl: 1.25rem;
+   /* 20px */
+   --text-2xl: 1.5rem;
+   /* 24px */
+   --text-3xl: 1.875rem;
+   /* 30px */
+   --text-4xl: 2.25rem;
+   /* 36px */
+   --text-5xl: 3rem;
+   /* 48px */
+   --text-6xl: 3.75rem;
+   /* 60px */
+   --text-7xl: 4.5rem;
+   /* 72px */
+
+   /* ========================================
+      FONT WEIGHT
+   ======================================== */
+   --font-light: 300;
+   --font-regular: 400;
+   --font-medium: 500;
+   --font-semibold: 600;
+   --font-bold: 700;
+
+   /* ========================================
+      LINE HEIGHT
+   ======================================== */
+   --leading-tight: 1.1;
+   --leading-snug: 1.25;
+   --leading-normal: 1.5;
+   --leading-relaxed: 1.7;
+
+   /* ========================================
+      SPACING
+   ======================================== */
+   --space-1: 0.25rem;
+   /* 4px */
+   --space-2: 0.5rem;
+   /* 8px */
+   --space-3: 0.75rem;
+   /* 12px */
+   --space-4: 1rem;
+   /* 16px */
+   --space-5: 1.25rem;
+   /* 20px */
+   --space-6: 1.5rem;
+   /* 24px */
+   --space-8: 2rem;
+   /* 32px */
+   --space-10: 2.5rem;
+   /* 40px */
+   --space-12: 3rem;
+   /* 48px */
+   --space-16: 4rem;
+   /* 64px */
+   --space-20: 5rem;
+   /* 80px */
+   --space-24: 6rem;
+   /* 96px */
+
+   /* ========================================
+      BORDER RADIUS
+   ======================================== */
+   --radius-sm: 4px;
+   --radius-md: 8px;
+   --radius-lg: 12px;
+   --radius-xl: 16px;
+   --radius-2xl: 24px;
+   --radius-full: 9999px;
+
+   /* ========================================
+      CONTAINER
+   ======================================== */
+   --container-max-width: 1440px;
+   --container-padding: 24px;
+
+   /* ========================================
+      SHADOW
+   ======================================== */
+   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+   --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.08);
+   --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
+
+   /* ========================================
+      TRANSITION
+   ======================================== */
+   --transition-fast: 150ms ease;
+   --transition-normal: 250ms ease;
+   --transition-slow: 400ms ease;
+}
