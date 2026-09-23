@@ -1,0 +1,431 @@
+/* components/commen/ProductCard/ProductCard.module.css */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+  background: var(--color-background);
+  /* enables container queries on supported browsers */
+  container-type: inline-size;
+}
+
+/* ========================================
+   IMAGE
+======================================== */
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-cream);
+}
+
+.image {
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+/* ========================================
+   BADGE — top-left
+======================================== */
+
+.badge {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 2;
+
+  padding: 3px var(--space-2);
+  border-radius: var(--radius-sm);
+
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: var(--font-bold);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+.badgeNew {
+  background: var(--color-text-primary);
+}
+
+.badgeSale {
+  background: var(--color-orange);
+}
+
+.badgeHot {
+  background: var(--color-brown);
+}
+
+/* ========================================
+   WISHLIST — top-right
+======================================== */
+
+.wishlistBtn {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  z-index: 3;
+
+  width: 34px;
+  height: 34px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--color-white);
+  color: var(--color-text-primary);
+
+  border: none;
+  border-radius: var(--radius-full);
+
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+
+  transition: color var(--transition-fast), transform var(--transition-fast),
+    width var(--transition-fast), height var(--transition-fast);
+}
+
+.wishlistBtn svg {
+  width: 15px;
+  height: 15px;
+  transition: width var(--transition-fast), height var(--transition-fast);
+}
+
+.wishlistBtn:hover {
+  color: var(--color-orange);
+  transform: scale(1.08);
+}
+
+.wishlistActive {
+  color: var(--color-orange);
+}
+
+/* ========================================
+   QUICK ADD — slides up from bottom
+   (now with side + bottom spacing, smaller height)
+======================================== */
+
+.quickAdd {
+  position: absolute;
+  left: var(--space-2);
+  right: var(--space-2);
+  bottom: var(--space-2);
+  z-index: 3;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+
+  padding: var(--space-2) var(--space-2);
+
+  background: var(--color-olive);
+  color: var(--color-white);
+  border: none;
+
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: var(--font-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1;
+
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(140%);
+
+  transition:
+    opacity var(--transition-normal),
+    transform var(--transition-normal),
+    background var(--transition-fast);
+}
+
+.quickAdd {
+  min-height: clamp(32px, 2.5vw, 40px);
+}
+
+.quickAdd svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  transition: width var(--transition-fast), height var(--transition-fast);
+}
+
+.quickAdd:hover {
+  background: var(--color-announcement-bar); 
+}
+
+.card:hover .quickAdd {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   INFO
+======================================== */
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-2) var(--space-1) var(--space-1);
+  text-decoration: none;
+}
+
+/* rating · category */
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex-wrap: nowrap;
+
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  line-height: 1.2;
+}
+
+.rating {
+  color: var(--color-orange);
+  white-space: nowrap;
+}
+
+.dot {
+  color: var(--color-text-muted);
+}
+
+.category {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-medium);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+/* name */
+.name {
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-snug);
+  margin: 0;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* price + old price */
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.price {
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  white-space: nowrap;
+}
+
+.oldPrice {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-regular);
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
+/* ========================================
+   FLUID SCALING WITH GLOBAL clamp() VARS
+======================================== */
+
+/* Global --text-* already clamps; below we nudge spacing/icons so the
+   card stays tidy on very small and very large screens. */
+
+/* Extra small (<= 380px) */
+@media (max-width: 380px) {
+  .badge {
+    font-size: 9px;
+    padding: 2px var(--space-1);
+    letter-spacing: 0.6px;
+  }
+
+  .wishlistBtn {
+    width: 28px;
+    height: 28px;
+  }
+
+  .wishlistBtn svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .quickAdd {
+    left: var(--space-1);
+    right: var(--space-1);
+    bottom: var(--space-1);
+    font-size: 10px;
+    padding: var(--space-1) var(--space-1);
+    letter-spacing: 0.8px;
+  }
+
+  .quickAdd svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  .info {
+    padding: var(--space-2) 0 0;
+    gap: 1px;
+  }
+
+  .name {
+    font-weight: var(--font-regular);
+  }
+}
+
+/* Small phones (<= 480px) */
+@media (max-width: 480px) {
+  .quickAdd {
+    font-size: 10px;
+    letter-spacing: 0.9px;
+  }
+}
+
+/* Tablets / medium (<= 900px) */
+@media (max-width: 900px) {
+  .quickAdd {
+    font-size: 11px;
+  }
+}
+
+/* Large desktop (>= 1440px) */
+@media (min-width: 1440px) {
+  .wishlistBtn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .wishlistBtn svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .quickAdd {
+    font-size: 12px;
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .quickAdd svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .badge {
+    font-size: 11px;
+  }
+}
+
+/* Extra large (>= 1920px) */
+@media (min-width: 1920px) {
+  .wishlistBtn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .wishlistBtn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .quickAdd {
+    font-size: 13px;
+    padding: var(--space-3) var(--space-3);
+  }
+
+  .quickAdd svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .badge {
+    font-size: 12px;
+    padding: var(--space-1) var(--space-3);
+  }
+}
+
+/* ========================================
+   CONTAINER QUERIES — scale by card width
+   (works even if the card sits in a narrow column
+   on a wide screen)
+======================================== */
+
+@container (max-width: 200px) {
+  .wishlistBtn {
+    width: 26px;
+    height: 26px;
+  }
+
+  .wishlistBtn svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .badge {
+    font-size: 9px;
+    padding: 2px var(--space-1);
+  }
+
+  .quickAdd {
+    font-size: 10px;
+    padding: var(--space-1) var(--space-1);
+  }
+
+  .quickAdd svg {
+    width: 11px;
+    height: 11px;
+  }
+}
+
+@container (min-width: 340px) {
+  .wishlistBtn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .wishlistBtn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .quickAdd {
+    font-size: 12px;
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .quickAdd svg {
+    width: 14px;
+    height: 14px;
+  }
+}

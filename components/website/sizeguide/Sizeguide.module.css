@@ -1,0 +1,159 @@
+/* components/website/sizeguide/Sizeguide/Sizeguide.module.css */
+
+.page {
+  padding: var(--space-8, 4rem) 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-8, 4rem);
+}
+
+.eyebrow {
+  display: inline-block;
+  color: var(--color-olive);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.title {
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-3xl, 2rem);
+  font-weight: var(--font-bold);
+  margin: 0 0 var(--space-3);
+}
+
+.description {
+  max-width: 520px;
+  margin: 0 auto;
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+.guideGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-8, 4rem);
+}
+
+.guideCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  background: var(--color-cream);
+}
+
+.guideIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--color-background);
+  color: var(--color-olive);
+}
+
+.guideTitle {
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.guideDescription {
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.chartHeading {
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 var(--space-4);
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  margin-bottom: var(--space-5);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+}
+
+.table th,
+.table td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  white-space: nowrap;
+  font-size: var(--text-sm);
+}
+
+.table thead th {
+  background: var(--color-cream);
+  color: var(--color-text-primary);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: var(--text-xs);
+}
+
+.table tbody tr {
+  border-top: 1px solid var(--color-border);
+}
+
+.table tbody td {
+  color: var(--color-text-secondary);
+}
+
+.table tbody tr:hover {
+  background: var(--color-cream);
+}
+
+.footnote {
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-style: italic;
+  text-align: center;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .guideGrid {
+    grid-template-columns: 1fr;
+  }
+}

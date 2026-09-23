@@ -1,0 +1,227 @@
+/* components/website/home/NewArrivals/NewArrivals.module.css */
+
+.section {
+  width: 100%;
+  background: var(--color-background);
+  padding: var(--space-16) 0;
+  font-family: var(--font-body);
+}
+
+.container {
+  width: min(
+    100% - (var(--container-padding) * 2),
+    var(--container-max-width)
+  );
+  margin: 0 auto;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.eyebrow {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.heading {
+  color: var(--color-text-primary);
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-2xl), 2.5vw, var(--text-4xl));
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: 0.5px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   ARROWS
+======================================== */
+
+.arrows {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.arrowBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  background: var(--color-background);
+  color: var(--color-text-primary);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+
+  cursor: pointer;
+
+  transition: background var(--transition-fast), color var(--transition-fast),
+    border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.arrowBtn:hover {
+  background: var(--color-olive);
+  color: var(--color-white);
+  border-color: var(--color-olive);
+  transform: translateY(-1px);
+}
+
+.arrowBtn:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+   HORIZONTAL SCROLL ROW
+======================================== */
+
+.scrollWrap {
+  position: relative;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 24px,
+    #000 calc(100% - 24px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 24px,
+    #000 calc(100% - 24px),
+    transparent 100%
+  );
+}
+
+.scrollRow {
+  display: flex;
+  gap: var(--space-6);
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scroll-padding-left: 0;
+
+  padding: var(--space-2) 0 var(--space-4);
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollRow::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollItem {
+  flex: 0 0 auto;
+  width: 260px;
+  scroll-snap-align: start;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1024px) {
+  .scrollRow {
+    gap: var(--space-5);
+  }
+
+  .scrollItem {
+    width: 230px;
+  }
+
+  .arrowBtn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .section {
+    padding: var(--space-12) 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .scrollRow {
+    gap: var(--space-4);
+  }
+
+  .scrollItem {
+    width: 200px;
+  }
+
+  .arrowBtn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .arrowBtn svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: var(--space-10) 0;
+  }
+
+  .scrollRow {
+    gap: var(--space-3);
+    padding-bottom: var(--space-3);
+  }
+
+  .scrollItem {
+    width: 160px;
+  }
+
+  .header {
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-4);
+  }
+
+  .arrowBtn {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+
+
+
+.message {
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  text-align: center;
+  padding: var(--space-10) var(--space-6);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-2xl);
+  margin: 0;
+}

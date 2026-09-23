@@ -1,0 +1,211 @@
+/* components/commen/ProductCard/ProductCardSkeleton.module.css */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+  background: var(--color-background);
+  container-type: inline-size;
+}
+
+/* ========================================
+   SHIMMER BASE
+======================================== */
+
+.shimmer {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-border);
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ========================================
+   IMAGE
+======================================== */
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-lg);
+}
+
+/* BADGE — top-left */
+.badge {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 2;
+
+  width: 44px;
+  height: 20px;
+  border-radius: var(--radius-sm);
+}
+
+/* WISHLIST — top-right */
+.wishlistBtn {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  z-index: 3;
+
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+}
+
+/* ========================================
+   INFO
+======================================== */
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-1) var(--space-1);
+}
+
+/* meta line */
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.rating {
+  height: 10px;
+  width: 40px;
+}
+
+.dot {
+  height: 6px;
+  width: 6px;
+  border-radius: var(--radius-full);
+}
+
+.category {
+  height: 10px;
+  width: 50px;
+}
+
+/* name */
+.name {
+  height: 14px;
+  width: 75%;
+}
+
+/* price row */
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: 2px;
+}
+
+.price {
+  height: 12px;
+  width: 70px;
+}
+
+.oldPrice {
+  height: 10px;
+  width: 50px;
+}
+
+/* ========================================
+   RESPONSIVE — match ProductCard
+======================================== */
+
+@media (max-width: 380px) {
+  .wishlistBtn {
+    width: 28px;
+    height: 28px;
+  }
+
+  .badge {
+    width: 36px;
+    height: 16px;
+  }
+
+  .info {
+    gap: 1px;
+    padding: var(--space-2) 0 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  .wishlistBtn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .badge {
+    width: 52px;
+    height: 22px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .wishlistBtn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .badge {
+    width: 58px;
+    height: 24px;
+  }
+}
+
+/* ========================================
+   CONTAINER QUERIES — match ProductCard
+======================================== */
+
+@container (max-width: 200px) {
+  .wishlistBtn {
+    width: 26px;
+    height: 26px;
+  }
+
+  .badge {
+    width: 34px;
+    height: 14px;
+  }
+}
+
+@container (min-width: 340px) {
+  .wishlistBtn {
+    width: 38px;
+    height: 38px;
+  }
+}
+

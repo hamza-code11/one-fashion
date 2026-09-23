@@ -1,5 +1,6 @@
-import Navbar from "@/components/website/Navbar/Navbar";
-// import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/layout/Navbar/Navbar";
+import TopBar from "@/components/layout/TopBar/TopBar";
+import Footer from "@/components/layout/Footer/Footer";
 
 export default function WebsiteLayout({
   children,
@@ -8,13 +9,14 @@ export default function WebsiteLayout({
 }>) {
   return (
     <>
+      <TopBar />
       <Navbar />
 
       <main>
         {children}
       </main>
 
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

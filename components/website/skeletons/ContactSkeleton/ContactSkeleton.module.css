@@ -1,0 +1,227 @@
+/* components/website/skeletons/ContactSkeleton/ContactSkeleton.module.css */
+
+.page {
+  padding: 48px 0 80px;
+  background: var(--color-background);
+  font-family: var(--font-body);
+}
+
+.container {
+  width: min(
+    100% - (var(--container-padding) * 2),
+    var(--container-max-width)
+  );
+  margin: 0 auto;
+}
+
+/* ========================================
+   SHIMMER BASE
+======================================== */
+
+.shimmer {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-border);
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.eyebrow {
+  height: 10px;
+  width: 120px;
+}
+
+.heading {
+  height: 44px;
+  width: 300px;
+}
+
+.description {
+  height: 12px;
+  width: 100%;
+  max-width: 520px;
+}
+
+.descriptionShort {
+  height: 12px;
+  width: 60%;
+  max-width: 320px;
+}
+
+/* ========================================
+   LAYOUT
+======================================== */
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: clamp(var(--space-6), 4vw, var(--space-12));
+  align-items: start;
+}
+
+/* ========================================
+   INFO CARDS
+======================================== */
+
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.infoCard {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-cream);
+  border-radius: var(--radius-lg);
+}
+
+.infoIcon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background: var(--color-background);
+}
+
+.infoText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+  flex: 1;
+}
+
+.infoTitle {
+  height: 10px;
+  width: 45%;
+}
+
+.infoValue {
+  height: 14px;
+  width: 85%;
+}
+
+.infoNote {
+  height: 10px;
+  width: 60%;
+}
+
+/* ========================================
+   FORM
+======================================== */
+
+.formCol {
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  height: 10px;
+  width: 25%;
+}
+
+.input {
+  height: 46px;
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+
+.textarea {
+  height: 130px;
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+
+.submitBtn {
+  height: 50px;
+  width: 180px;
+  border-radius: var(--radius-md);
+  margin-top: var(--space-2);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 560px) {
+  .page {
+    padding: 32px 0 56px;
+  }
+
+  .heading {
+    height: 34px;
+    width: 220px;
+  }
+
+  .infoCard {
+    padding: var(--space-3);
+  }
+
+  .infoIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .textarea {
+    height: 110px;
+  }
+
+  .submitBtn {
+    height: 46px;
+    width: 100%;
+  }
+}

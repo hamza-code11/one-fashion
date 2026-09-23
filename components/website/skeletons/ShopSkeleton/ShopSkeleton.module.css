@@ -1,0 +1,226 @@
+/* components/website/skeletons/ShopSkeleton/ShopSkeleton.module.css */
+
+.page {
+  width: 100%;
+  padding: var(--space-8) 0 var(--space-16);
+  font-family: var(--font-body);
+}
+
+.container {
+  width: min(
+    100% - (var(--container-padding) * 2),
+    var(--container-max-width)
+  );
+  margin: 0 auto;
+}
+
+/* ========================================
+   SHIMMER BASE
+======================================== */
+
+.shimmer {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-border);
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ========================================
+   SHOP HEADER
+======================================== */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-10);
+}
+
+.headerTitle {
+  height: 40px;
+  width: 280px;
+}
+
+.headerSubtitle {
+  height: 12px;
+  width: 420px;
+  max-width: 100%;
+}
+
+/* ========================================
+   LAYOUT
+======================================== */
+
+.layout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-10);
+}
+
+/* ========================================
+   SIDEBAR
+======================================== */
+
+.sidebar {
+  flex: 0 0 240px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.filterBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.filterTitle {
+  height: 12px;
+  width: 60%;
+  margin-bottom: var(--space-1);
+}
+
+.filterRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.filterLabel {
+  height: 10px;
+  width: 70%;
+}
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.toolbarCount {
+  height: 12px;
+  width: 140px;
+}
+
+.toolbarSort {
+  height: 36px;
+  width: 180px;
+  border-radius: var(--radius-md);
+}
+
+/* ========================================
+   PRODUCT GRID
+======================================== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-6);
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1180px) {
+  .layout {
+    gap: var(--space-6);
+  }
+
+  .sidebar {
+    flex: 0 0 210px;
+  }
+
+  .grid {
+    gap: var(--space-5);
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: var(--space-6) 0 var(--space-12);
+  }
+
+  /* Hide sidebar — matches real page where sidebar collapses into drawer */
+  .sidebar {
+    display: none;
+  }
+
+  .layout {
+    gap: 0;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+
+  .headerTitle {
+    height: 32px;
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    gap: var(--space-3);
+  }
+
+  .toolbarSort {
+    width: 120px;
+    height: 32px;
+  }
+
+  .toolbarCount {
+    width: 100px;
+  }
+}
+

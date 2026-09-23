@@ -12,13 +12,13 @@
   --color-orange: #b65c33;
   --color-brown: #6e3621;
 
-  --color-cream: #dacec4;
+  --color-cream: #dacec34d;
   --color-dark-brown: #211712;
 
   --color-gray: #5d5d63;
 
 
-  /* ========================================
+/* ========================================
      BASE / THEME COLORS
   ======================================== */
 
@@ -39,11 +39,11 @@
      COMPONENT COLORS
   ======================================== */
 
-  --color-button-primary: #000000;
-  --color-button-primary-hover: #3c0f82;
+  --color-button-primary: #594f07;
+  --color-button-primary-hover: #000000;
 
-  --color-button-secondary: #3c0f82;
-  --color-button-secondary-hover: #2d0963;
+  --color-button-secondary: #0b4c0c;
+  --color-button-secondary-hover: #000000;
 
   --color-card-background: #ffffff;
 

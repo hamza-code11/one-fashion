@@ -1,0 +1,195 @@
+/* components/website/skeletons/FaqSkeleton/FaqSkeleton.module.css */
+
+.page {
+  padding: 48px 0 80px;
+  background: var(--color-background);
+  font-family: var(--font-body);
+}
+
+.container {
+  width: min(
+    100% - (var(--container-padding) * 2),
+    var(--container-max-width)
+  );
+  margin: 0 auto;
+  max-width: 840px;
+}
+
+/* ========================================
+   SHIMMER BASE
+======================================== */
+
+.shimmer {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-border);
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.eyebrow {
+  height: 10px;
+  width: 100px;
+}
+
+.heading {
+  height: 44px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.description {
+  height: 12px;
+  width: 100%;
+  max-width: 560px;
+}
+
+.descriptionShort {
+  height: 12px;
+  width: 60%;
+  max-width: 340px;
+}
+
+/* ========================================
+   ACCORDION LIST
+======================================== */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-background);
+  overflow: hidden;
+}
+
+.itemOpen {
+  border-color: var(--color-olive);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========================================
+   QUESTION ROW
+======================================== */
+
+.question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+}
+
+.questionText {
+  height: 14px;
+  width: 70%;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background: var(--color-cream);
+}
+
+.iconOpen {
+  background: var(--color-olive);
+  opacity: 0.5;
+}
+
+/* ========================================
+   ANSWER (only visible for the first item)
+======================================== */
+
+.answerWrap {
+  padding: 0 var(--space-5) var(--space-5);
+}
+
+.answer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.answerLine {
+  height: 12px;
+  width: 100%;
+}
+
+.answerLineShort {
+  height: 12px;
+  width: 55%;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 560px) {
+  .page {
+    padding: 32px 0 56px;
+  }
+
+  .heading {
+    height: 34px;
+    max-width: 300px;
+  }
+
+  .question {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .questionText {
+    height: 12px;
+    width: 65%;
+  }
+
+  .icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .answerWrap {
+    padding: 0 var(--space-4) var(--space-4);
+  }
+}
+

@@ -1,49 +1,54 @@
-/* 1. Google Font Import (Hamesha Sabse Upar) */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&family=Signika:wght@300..700&display=swap');
 
-/* 2. Local Font Declaration (Root level par, :root ke bahar) */
-@font-face {
-   font-family: 'Bauhaus 93';
-   src: url('/fonts/bauhaus93.ttf') format('truetype');
-   font-weight: normal;
-   font-style: normal;
-   font-display: swap;
-}
 
 /* 3. Root Variables (Sirf Variables Honge) */
 :root {
    /* ========================================
       FONT FAMILY
    ======================================== */
-   --font-display: 'Bauhaus 93', cursive, sans-serif;
-   --font-heading: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+   --font-display: 'Playfair Display SC', serif;
+   --font-heading: 'Roboto Slab', serif;
    --font-body: 'Poppins', sans-serif;
 
    /* ========================================
       FONT SIZE
    ======================================== */
-   --text-xs: 0.75rem;
-   /* 12px */
-   --text-sm: 0.875rem;
-   /* 14px */
-   --text-base: 1rem;
-   /* 16px */
-   --text-lg: 1.125rem;
-   /* 18px */
-   --text-xl: 1.25rem;
-   /* 20px */
-   --text-2xl: 1.5rem;
-   /* 24px */
-   --text-3xl: 1.875rem;
-   /* 30px */
-   --text-4xl: 2.25rem;
-   /* 36px */
-   --text-5xl: 3rem;
-   /* 48px */
-   --text-6xl: 3.75rem;
-   /* 60px */
-   --text-7xl: 4.5rem;
-   /* 72px */
+
+   /* Responsive Font Sizes */
+
+   --text-xs: clamp(0.5625rem, 0.5rem + 0.25vw, 0.75rem);
+   /* 9px → 12px */
+
+   --text-sm: clamp(0.6875rem, 0.6rem + 0.25vw, 0.875rem);
+   /* 11px → 14px */
+
+   --text-base: clamp(0.75rem, 0.65rem + 0.35vw, 1rem);
+   /* 12px → 16px */
+
+   --text-lg: clamp(0.875rem, 0.75rem + 0.45vw, 1.125rem);
+   /* 14px → 18px */
+
+   --text-xl: clamp(1rem, 0.8rem + 0.6vw, 1.25rem);
+   /* 16px → 20px */
+
+   --text-2xl: clamp(1.125rem, 0.9rem + 0.8vw, 1.5rem);
+   /* 18px → 24px */
+
+   --text-3xl: clamp(1.25rem, 1rem + 1vw, 1.875rem);
+   /* 20px → 30px */
+
+   --text-4xl: clamp(1.5rem, 1.1rem + 1.4vw, 2.25rem);
+   /* 24px → 36px */
+
+   --text-5xl: clamp(1.75rem, 1.2rem + 2vw, 3rem);
+   /* 28px → 48px */
+
+   --text-6xl: clamp(2rem, 1.4rem + 2.5vw, 3.75rem);
+   /* 32px → 60px */
+
+   --text-7xl: clamp(2.5rem, 1.7rem + 3.2vw, 4.5rem);
+   /* 40px → 72px */
+
 
    /* ========================================
       FONT WEIGHT

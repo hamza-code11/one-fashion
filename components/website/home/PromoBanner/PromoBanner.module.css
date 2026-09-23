@@ -1,0 +1,183 @@
+/* components/website/home/PromoBanner/PromoBanner.module.css */
+
+.section {
+  width: 100%;
+  background: var(--color-background);
+  padding: var(--space-4) 0;
+  font-family: var(--font-body);
+}
+
+.container {
+  width: min(
+    100% - (var(--container-padding) * 2),
+    var(--container-max-width)
+  );
+  margin: 0 auto;
+}
+
+/* ========================================
+   BANNER
+======================================== */
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: clamp(240px, 28vw, 380px);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+/* gradient overlay — left side darker for text, right side clear */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    100deg,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.55) 30%,
+    rgba(0, 0, 0, 0.25) 55%,
+    rgba(0, 0, 0, 0) 80%
+  );
+  pointer-events: none;
+}
+
+/* ========================================
+   CONTENT — bottom-left
+======================================== */
+
+.content {
+  position: absolute;
+  left: clamp(var(--space-5), 3vw, var(--space-10));
+  bottom: clamp(var(--space-5), 3vw, var(--space-8));
+  right: clamp(var(--space-5), 3vw, var(--space-10));
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 520px;
+}
+
+/* eyebrow — small pill */
+.eyebrow {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+
+  padding: 4px var(--space-3);
+  border-radius: var(--radius-full);
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  color: var(--color-white);
+
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.heading {
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-weight: var(--font-semibold);
+  font-size: clamp(var(--text-2xl), 2.6vw, var(--text-4xl));
+  line-height: var(--leading-tight);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: var(--space-1) 0 0;
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+  max-width: 52ch;
+}
+
+/* ========================================
+   CTA
+======================================== */
+
+.cta {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: var(--space-3);
+  padding: var(--space-3) var(--space-6);
+
+  background: var(--color-white);
+  color: var(--color-text-primary);
+
+  border-radius: var(--radius-full);
+
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  transition: background var(--transition-normal), color var(--transition-normal),
+    transform var(--transition-fast);
+}
+
+.cta:hover {
+  background: var(--color-olive); 
+  color: var(--color-white);
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 640px) {
+  .section {
+    padding: var(--space-8) 0;
+  }
+
+  .banner {
+    height: auto;
+    min-height: 320px;
+    border-radius: var(--radius-lg);
+  }
+
+  .overlay {
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.55) 40%,
+      rgba(0, 0, 0, 0.15) 75%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
+  .content {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    padding: var(--space-6) var(--space-5);
+    max-width: none;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+  }
+}

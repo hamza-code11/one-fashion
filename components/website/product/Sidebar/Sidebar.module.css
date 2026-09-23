@@ -1,0 +1,47 @@
+/* components/website/shop/Sidebar/Sidebar.module.css */
+
+.sidebar {
+  flex: 0 0 240px;
+  width: 240px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.heading {
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.clearBtn {
+  background: none;
+  border: none;
+  padding: 0;
+
+  color: var(--color-olive);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+}
+
+.clearBtn:hover {
+  text-decoration: underline;
+}
+
+/* Sidebar only belongs to the desktop layout (image 1).
+   On mobile/tablet, filters live in the FilterDrawer instead (image 2). */
+@media (max-width: 900px) {
+  .sidebar {
+    display: none;
+  }
+}

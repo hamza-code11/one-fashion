@@ -1,98 +1,97 @@
 // components/CategoryShowcase.tsx
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
+import Link from 'next/link';
 import styles from './CategoryShowcase.module.css';
+import { categories } from '@/data/categories';
 
-interface Category {
-  id: number;
-  title: string;
-  description: string;
-  linkText: string;
-}
+const AUTO_PLAY_INTERVAL = 3000;
+const SLIDE_DURATION = 700;
 
-const categories: Category[] = [
-  {
-    id: 1,
-    title: 'Furniture',
-    description: 'Modern & minimal pieces for every corner of your home.',
-    linkText: 'Shop Now',
-  },
-  {
-    id: 2,
-    title: 'Lighting',
-    description: 'Ambient lamps and pendants to set the perfect mood.',
-    linkText: 'Shop Now',
-  },
-  {
-    id: 3,
-    title: 'Decor',
-    description: 'Handpicked accents that bring warmth and character.',
-    linkText: 'Shop Now',
-  },
-  {
-    id: 4,
-    title: 'Textiles',
-    description: 'Soft rugs, throws and cushions in rich natural tones.',
-    linkText: 'Shop Now',
-  },
-  {
-    id: 5,
-    title: 'Storage',
-    description: 'Smart solutions to keep your space clean and calm.',
-    linkText: 'Shop Now',
-  },
-  {
-    id: 6,
-    title: 'Outdoor',
-    description: 'Durable designs built for balconies, patios and gardens.',
-    linkText: 'Shop Now',
-  },
+// Breakpoints → how many cards are visible at once
+const BREAKPOINTS = [
+  { maxWidth: 480, visible: 3 },
+  { maxWidth: 860, visible: 3 },
+  { maxWidth: 1180, visible: 5 },
+  { maxWidth: Infinity, visible: 5 },
 ];
 
-const VISIBLE_CARDS = 3;
-const AUTO_PLAY_INTERVAL = 3000;
+function getVisibleCount(width: number): number {
+  const match = BREAKPOINTS.find((bp) => width <= bp.maxWidth);
+  return match ? match.visible : 5;
+}
 
 const CategoryShowcase: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const ORIGINAL = categories.length;
+
+  // Triple the list for infinite loop — no visible jump
+  const looped = useMemo(() => [...categories, ...categories, ...categories], []);
+  const TOTAL = looped.length;
+
+  const [visibleCards, setVisibleCards] = useState(5);
+  const centerSlot = Math.floor(visibleCards / 2);
+
+  // Start in the middle block, offset so active is truly centered
+  const [activeIndex, setActiveIndex] = useState(ORIGINAL);
   const [isPaused, setIsPaused] = useState(false);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const [noTransition, setNoTransition] = useState(false);
 
-  const total = categories.length;
-  const activeCard = activeIndex % total;
+  // Track viewport width → adjust visible card count responsively
+  useEffect(() => {
+    const updateVisible = () => setVisibleCards(getVisibleCount(window.innerWidth));
+    updateVisible();
+    window.addEventListener('resize', updateVisible);
+    return () => window.removeEventListener('resize', updateVisible);
+  }, []);
 
-  // Auto-play
+  // Auto-play — always move forward by 1
   useEffect(() => {
     if (isPaused) return;
     const timer = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % total);
+      setActiveIndex((prev) => prev + 1);
     }, AUTO_PLAY_INTERVAL);
     return () => clearInterval(timer);
-  }, [isPaused, total]);
+  }, [isPaused]);
 
-  // Position track so active card is centered
+  // Silent reset when we cross into the 3rd block
   useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
+    if (activeIndex < ORIGINAL * 2) return;
+    const t = setTimeout(() => {
+      setNoTransition(true);
+      setActiveIndex((prev) => prev - ORIGINAL);
+    }, SLIDE_DURATION);
+    return () => clearTimeout(t);
+  }, [activeIndex, ORIGINAL]);
 
-    const cardWidthPercent = 100 / total;
-    const shift =
-      cardWidthPercent * activeIndex -
-      cardWidthPercent * (VISIBLE_CARDS / 2) +
-      cardWidthPercent / 2;
+  // Re-enable transition next frame
+  useEffect(() => {
+    if (!noTransition) return;
+    const id = requestAnimationFrame(() => setNoTransition(false));
+    return () => cancelAnimationFrame(id);
+  }, [noTransition]);
 
-    track.style.transform = `translateX(-${shift}%)`;
-  }, [activeIndex, total]);
+  const handleCardClick = (index: number) => setActiveIndex(index);
 
-  const handleCardClick = (index: number) => {
-    setActiveIndex(index);
-  };
+  // The card that is currently in the CENTER slot of the visible window
+  const activeCardIndex = activeIndex;
+
+  // Each card occupies (100 / TOTAL) % of the track.
+  // We want activeCardIndex to sit at slot centerSlot (0-indexed within the visible window).
+  const cardWidthPct = 100 / TOTAL;
+  const shiftPct = (activeCardIndex - centerSlot) * cardWidthPct;
 
   return (
     <section
       className={styles.wrapper}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      style={
+        {
+          '--total-cards': TOTAL,
+          '--visible-cards': visibleCards,
+        } as React.CSSProperties
+      }
     >
       {/* LEFT PANEL */}
       <div className={styles.left}>
@@ -106,24 +105,6 @@ const CategoryShowcase: React.FC = () => {
           Shop All
           <span aria-hidden="true">→</span>
         </button>
-
-        {/* Decorative dots */}
-        <div className={styles.dots} aria-hidden="true">
-          <span className={styles.dotBlue} />
-          <span className={styles.dotOrange} />
-          <span className={styles.dotPink} />
-        </div>
-      </div>
-
-      {/* Decorative flower */}
-      <div className={styles.flower} aria-hidden="true">
-        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
-          <circle cx="21" cy="8" r="6" fill="var(--color-accent-yellow)" />
-          <circle cx="34" cy="21" r="6" fill="var(--color-accent-pink)" />
-          <circle cx="21" cy="34" r="6" fill="var(--color-accent-blue)" />
-          <circle cx="8" cy="21" r="6" fill="var(--color-accent-green)" />
-          <circle cx="21" cy="21" r="5" fill="var(--color-white)" />
-        </svg>
       </div>
 
       {/* DIVIDER */}
@@ -131,12 +112,20 @@ const CategoryShowcase: React.FC = () => {
 
       {/* CAROUSEL */}
       <div className={styles.carousel}>
-        <div className={styles.track} ref={trackRef}>
-          {categories.map((cat, index) => {
-            const isActive = index === activeCard;
+        <div
+          className={styles.track}
+          style={{
+            transform: `translateX(-${shiftPct}%)`,
+            transition: noTransition
+              ? 'none'
+              : `transform ${SLIDE_DURATION}ms cubic-bezier(0.25, 0.8, 0.25, 1)`,
+          }}
+        >
+          {looped.map((cat, index) => {
+            const isActive = index === activeCardIndex;
             return (
               <article
-                key={cat.id}
+                key={`${cat.id}-${index}`}
                 className={`${styles.card} ${isActive ? styles.cardActive : ''}`}
                 onClick={() => handleCardClick(index)}
                 role="button"
@@ -145,12 +134,19 @@ const CategoryShowcase: React.FC = () => {
                   if (e.key === 'Enter' || e.key === ' ') handleCardClick(index);
                 }}
               >
-                <h3 className={styles.cardTitle}>{cat.title}</h3>
-                <p className={styles.cardDesc}>{cat.description}</p>
-                <a className={styles.cardLink} href="#">
-                  {cat.linkText}
-                  <span aria-hidden="true">→</span>
-                </a>
+                <div
+                  className={styles.cardInner}
+                  style={{ backgroundImage: `url(${cat.image})` }}
+                >
+                  <div className={styles.cardOverlay} />
+                  <div className={styles.cardContent}>
+                    <h3 className={styles.cardTitle}>{cat.title}</h3>
+                    <Link href={cat.href} className={styles.cardLink}>
+                      Shop Now
+                      <span aria-hidden="true">→</span>
+                    </Link>
+                  </div>
+                </div>
               </article>
             );
           })}

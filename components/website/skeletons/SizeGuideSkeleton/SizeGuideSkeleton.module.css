@@ -1,0 +1,209 @@
+/* components/website/skeletons/SizeGuideSkeleton/SizeGuideSkeleton.module.css */
+
+.page {
+  padding: var(--space-8, 4rem) 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+/* ========================================
+   SHIMMER BASE
+======================================== */
+
+.shimmer {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-border);
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-8, 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.eyebrow {
+  height: 10px;
+  width: 90px;
+}
+
+.title {
+  height: 36px;
+  width: 200px;
+}
+
+.description {
+  height: 12px;
+  width: 100%;
+  max-width: 520px;
+}
+
+.descriptionShort {
+  height: 12px;
+  width: 60%;
+  max-width: 320px;
+}
+
+/* ========================================
+   GUIDE CARDS
+======================================== */
+
+.guideGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-8, 4rem);
+}
+
+.guideCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+
+  padding: var(--space-5) var(--space-4);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  background: var(--color-cream);
+}
+
+.guideIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+}
+
+.guideTitle {
+  height: 12px;
+  width: 70%;
+  margin-top: var(--space-1);
+}
+
+.guideLine {
+  height: 10px;
+  width: 90%;
+}
+
+.guideLineShort {
+  height: 10px;
+  width: 60%;
+}
+
+/* ========================================
+   CHART HEADING
+======================================== */
+
+.chartHeading {
+  height: 20px;
+  width: 140px;
+  margin-bottom: var(--space-4);
+}
+
+/* ========================================
+   TABLE
+======================================== */
+
+.tableWrapper {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  margin-bottom: var(--space-5);
+  overflow: hidden;
+}
+
+.tableRowHead,
+.tableRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+}
+
+.tableRowHead {
+  background: var(--color-cream);
+}
+
+.tableRow + .tableRow {
+  border-top: 1px solid var(--color-border);
+}
+
+.cellHead {
+  height: 10px;
+  width: 60%;
+}
+
+.cell {
+  height: 12px;
+  width: 70%;
+}
+
+/* ========================================
+   FOOTNOTE
+======================================== */
+
+.footnote {
+  height: 10px;
+  width: 70%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 640px) {
+  .guideGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .description {
+    max-width: 100%;
+  }
+
+  .title {
+    height: 28px;
+    width: 160px;
+  }
+
+  .tableRowHead,
+  .tableRow {
+    gap: var(--space-2);
+    padding: var(--space-3);
+  }
+}
+

@@ -1,0 +1,301 @@
+/* components/website/skeletons/PrivacySkeleton/PrivacySkeleton.module.css */
+
+.page {
+  padding: 48px 0 80px;
+  background: var(--color-background);
+  font-family: var(--font-body);
+}
+
+.container {
+  width: min(
+    100% - (var(--container-padding) * 2),
+    var(--container-max-width)
+  );
+  margin: 0 auto;
+}
+
+/* ========================================
+   SHIMMER BASE
+======================================== */
+
+.shimmer {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-border);
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.eyebrow {
+  height: 10px;
+  width: 90px;
+}
+
+.heading {
+  height: 44px;
+  width: 320px;
+  max-width: 100%;
+}
+
+.lastUpdated {
+  height: 10px;
+  width: 160px;
+}
+
+.intro {
+  height: 12px;
+  width: 100%;
+  max-width: 600px;
+  margin-top: var(--space-2);
+}
+
+.introShort {
+  height: 12px;
+  width: 60%;
+  max-width: 380px;
+}
+
+/* ========================================
+   LAYOUT
+======================================== */
+
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: clamp(var(--space-8), 5vw, var(--space-16));
+  align-items: start;
+}
+
+/* ========================================
+   SIDEBAR / TOC
+======================================== */
+
+.sidebar {
+  position: sticky;
+  top: 104px;
+  align-self: start;
+}
+
+.toc {
+  padding: var(--space-5);
+  background: var(--color-cream);
+  border-radius: var(--radius-xl);
+}
+
+.tocTitle {
+  height: 10px;
+  width: 60%;
+  margin-bottom: var(--space-4);
+}
+
+.tocList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.tocLink {
+  height: 12px;
+  width: 100%;
+}
+
+/* make each row a different width for a natural look */
+.tocLink:nth-child(2n) {
+  width: 85%;
+}
+
+.tocLink:nth-child(3n) {
+  width: 70%;
+}
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.content {
+  min-width: 0;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.sectionHeading {
+  height: 22px;
+  width: 55%;
+  margin-bottom: var(--space-1);
+}
+
+.paragraph {
+  height: 14px;
+  width: 100%;
+}
+
+.paragraphShort {
+  height: 14px;
+  width: 65%;
+}
+
+/* ========================================
+   BULLETS
+======================================== */
+
+.bullets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.bullet {
+  height: 12px;
+  width: 90%;
+  margin-left: var(--space-6); /* indent, same as real bullet padding-left */
+}
+
+.bullet:nth-child(2n) {
+  width: 80%;
+}
+
+.bullet:nth-child(3n) {
+  width: 70%;
+}
+
+/* ========================================
+   FOOTER CARD
+======================================== */
+
+.footerCard {
+  margin-top: var(--space-12);
+  padding: var(--space-10) var(--space-8);
+
+  background: var(--color-cream);
+  border-radius: var(--radius-2xl);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.footerText {
+  height: 18px;
+  width: 240px;
+  max-width: 80%;
+}
+
+.footerBtn {
+  height: 42px;
+  width: 140px;
+  border-radius: var(--radius-full);
+}
+
+.footerEmail {
+  height: 10px;
+  width: 180px;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 220px 1fr;
+    gap: var(--space-8);
+  }
+
+  .toc {
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 32px 0 56px;
+  }
+
+  .heading {
+    height: 34px;
+    width: 220px;
+  }
+
+  .header {
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-6);
+  }
+
+  .sectionHeading {
+    height: 18px;
+    width: 70%;
+  }
+
+  .paragraph,
+  .paragraphShort,
+  .bullet {
+    height: 12px;
+  }
+
+  .footerCard {
+    padding: var(--space-8) var(--space-5);
+  }
+
+  .footerText {
+    height: 16px;
+    width: 200px;
+  }
+}

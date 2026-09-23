@@ -1,0 +1,266 @@
+/* components/website/product/ProductPage/Imagegallery.module.css */
+
+.gallery {
+  display: flex;
+  gap: 16px;
+}
+
+/* ========================================
+   THUMBNAILS
+======================================== */
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 72px;
+  flex-shrink: 0;
+}
+
+.thumbnail {
+  position: relative;
+  width: 72px;
+  height: 88px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+  background: var(--color-cream);
+  transition: border-color var(--transition-fast);
+}
+
+.thumbnailActive {
+  border-color: var(--color-text-primary);
+}
+
+.thumbnailImage {
+  object-fit: cover;
+}
+
+/* ========================================
+   MAIN IMAGE
+======================================== */
+
+.mainImageWrapper {
+  position: relative;
+  flex: 1;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-cream);
+  cursor: zoom-in;
+}
+
+.mainImage {
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--color-text-primary);
+  color: var(--color-white);
+  font-size: 11px;
+  font-weight: var(--font-bold);
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  z-index: 1;
+}
+
+/* hover hint */
+.zoomHint {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 6px 10px;
+
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--color-white);
+
+  font-size: 11px;
+  font-weight: var(--font-medium);
+  letter-spacing: 0.5px;
+
+  border-radius: var(--radius-full);
+
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity var(--transition-normal), transform var(--transition-normal);
+
+  pointer-events: none;
+}
+
+.mainImageWrapper:hover .zoomHint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   LIGHTBOX
+======================================== */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.92);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 20px 100px;
+  animation: fadeIn 200ms ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* controls */
+.lightboxControls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.ctrlBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-full);
+
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.ctrlBtn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: scale(1.05);
+}
+
+/* image area */
+.lightboxImageWrap {
+  position: relative;
+  max-width: min(90vw, 900px);
+  max-height: 80vh;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  user-select: none;
+}
+
+.lightboxImage {
+  max-width: 100%;
+  max-height: 80vh;
+  display: block;
+  object-fit: contain;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* thumbnails inside lightbox */
+.lightboxThumbs {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 8px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-md);
+
+  padding: 8px;
+}
+
+.lightboxThumb {
+  width: 56px;
+  height: 68px;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  opacity: 0.6;
+  transition: opacity var(--transition-fast), border-color var(--transition-fast);
+}
+
+.lightboxThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lightboxThumb:hover {
+  opacity: 1;
+}
+
+.lightboxThumbActive {
+  border-color: var(--color-white);
+  opacity: 1;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+  .gallery {
+    flex-direction: column-reverse;
+  }
+
+  .thumbnails {
+    flex-direction: row;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .thumbnail {
+    flex-shrink: 0;
+  }
+
+  .lightbox {
+    padding: 20px 12px 90px;
+  }
+
+  .lightboxControls {
+    top: 12px;
+    right: 12px;
+    gap: 6px;
+  }
+
+  .ctrlBtn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .lightboxThumb {
+    width: 46px;
+    height: 56px;
+  }
+}
+

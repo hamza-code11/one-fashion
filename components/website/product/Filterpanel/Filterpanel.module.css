@@ -1,0 +1,98 @@
+/* components/website/shop/FilterPanel/FilterPanel.module.css */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section:first-child {
+  border-top: 1px solid var(--color-border);
+}
+
+.sectionHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: var(--space-4) 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.sectionBody {
+  padding: 0 0 var(--space-4);
+}
+
+/* ========================================
+   CHECKBOX LIST (Gender / Age / Price / Availability)
+======================================== */
+
+.checkboxList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+}
+
+.checkboxRow input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-olive);
+  cursor: pointer;
+}
+
+.checkboxRow:hover {
+  color: var(--color-text-primary);
+}
+
+/* ========================================
+   COLOR SWATCHES
+======================================== */
+
+.colorList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.colorSwatch {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-border);
+  cursor: pointer;
+  padding: 0;
+  transition: border-color var(--transition-normal), transform var(--transition-fast);
+}
+
+.colorSwatch:hover {
+  transform: scale(1.08);
+}
+
+.colorSwatchActive {
+  border-color: var(--color-olive);
+  box-shadow: 0 0 0 2px var(--color-background), 0 0 0 3.5px var(--color-olive);
+}

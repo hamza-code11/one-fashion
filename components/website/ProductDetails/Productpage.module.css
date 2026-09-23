@@ -1,0 +1,77 @@
+/* components/website/product/ProductPage/Productpage.module.css */
+
+.page {
+  padding: 32px 0 64px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ========================================
+   TOP — 50 / 50 split, no stretching
+======================================== */
+
+.top {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* strict 50 / 50 */
+  gap: 48px;
+  align-items: start;              /* don't stretch children to equal height */
+}
+
+.galleryCol {
+  /* stays at top of its own column */
+  align-self: start;
+  position: sticky;                /* gallery stays visible while info scrolls */
+  top: 24px;
+}
+
+.infoCol {
+  align-self: start;
+  /* long content just flows naturally; it never affects the gallery width */
+  min-width: 0;
+}
+
+/* related products pushed to their own row */
+.relatedRow {
+  margin-top: 80px;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+  .top {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .galleryCol {
+    position: static;              /* disable sticky on mobile */
+    top: auto;
+  }
+
+  .relatedRow {
+    margin-top: 56px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 20px 0 48px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+}
+
+
+
+.wishlistButtonActive {
+  color: var(--color-orange);
+  border-color: var(--color-orange);
+}

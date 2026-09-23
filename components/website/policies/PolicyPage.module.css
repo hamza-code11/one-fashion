@@ -1,0 +1,327 @@
+/* components/website/policies/PolicyPage.module.css */
+
+.page {
+  padding: 48px 0 80px;
+  background: var(--color-background);
+  font-family: var(--font-body);
+}
+
+.container {
+  width: min(
+    100% - (var(--container-padding) * 2),
+    var(--container-max-width)
+  );
+  margin: 0 auto;
+}
+
+/* ========================================
+   HEADER — full width centered
+======================================== */
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.eyebrow {
+  color: var(--color-olive);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.heading {
+  color: var(--color-text-primary);
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 3.5vw, var(--text-5xl));
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.lastUpdated {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  letter-spacing: 0.5px;
+}
+
+.intro {
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  max-width: 68ch;
+  margin: var(--space-3) 0 0;
+}
+
+/* ========================================
+   BODY LAYOUT — sidebar + content
+======================================== */
+
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: clamp(var(--space-8), 5vw, var(--space-16));
+  align-items: start;
+}
+
+/* LEFT SIDEBAR */
+.sidebar {
+  position: sticky;
+  top: 104px; /* below sticky navbar */
+  align-self: start;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+/* RIGHT CONTENT */
+.content {
+  min-width: 0;
+}
+
+/* ========================================
+   TABLE OF CONTENTS
+======================================== */
+
+.toc {
+  padding: var(--space-5);
+  background: var(--color-cream);
+  border-radius: var(--radius-xl);
+}
+
+.tocTitle {
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-3);
+}
+
+.tocList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.tocLink {
+  display: block;
+  padding: var(--space-1) var(--space-2);
+
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  text-decoration: none;
+
+  border-radius: var(--radius-sm);
+  border-left: 2px solid transparent;
+
+  transition: color var(--transition-fast), background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.tocLink:hover {
+  color: var(--color-olive);
+  background: var(--color-background);
+  border-left-color: var(--color-olive);
+}
+
+/* ========================================
+   SECTIONS
+======================================== */
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+.section {
+  scroll-margin-top: 120px;
+}
+
+.sectionHeading {
+  color: var(--color-text-primary);
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-lg), 1.6vw, var(--text-2xl));
+  font-weight: var(--font-bold);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-4);
+}
+
+.paragraph {
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  margin: 0 0 var(--space-3);
+}
+
+.paragraph:last-child {
+  margin-bottom: 0;
+}
+
+/* ========================================
+   BULLETS
+======================================== */
+
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.bullet {
+  position: relative;
+  padding-left: var(--space-6);
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+.bullet::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 6px;
+  height: 6px;
+  background: var(--color-olive);
+  border-radius: var(--radius-full);
+}
+
+/* ========================================
+   FOOTER CARD
+======================================== */
+
+.footerCard {
+  margin-top: var(--space-12);
+  padding: var(--space-10) var(--space-8);
+
+  background: var(--color-cream);
+  border-radius: var(--radius-2xl);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+}
+
+.footerText {
+  color: var(--color-text-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-medium);
+  margin: 0;
+}
+
+.footerBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--space-3) var(--space-6);
+
+  background: var(--color-button-primary);
+  color: var(--color-white);
+
+  border-radius: var(--radius-full);
+
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  text-decoration: none;
+
+  transition: background var(--transition-normal), transform var(--transition-fast);
+}
+
+.footerBtn:hover {
+  background: var(--color-button-primary-hover);
+  transform: translateY(-1px);
+}
+
+.footerEmail {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  letter-spacing: 0.3px;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 220px 1fr;
+    gap: var(--space-8);
+  }
+
+  .toc {
+    padding: var(--space-4);
+  }
+
+  .tocLink {
+    font-size: var(--text-xs);
+  }
+}
+
+@media (max-width: 900px) {
+  /* Stack — TOC moves on top of content */
+  .layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .sidebar {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 32px 0 56px;
+  }
+
+  .heading {
+    font-size: var(--text-3xl);
+  }
+
+  .header {
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-6);
+  }
+
+  .sectionHeading {
+    font-size: var(--text-lg);
+  }
+
+  .paragraph,
+  .bullet {
+    font-size: var(--text-sm);
+  }
+
+  .footerCard {
+    padding: var(--space-8) var(--space-5);
+  }
+
+  .footerText {
+    font-size: var(--text-base);
+  }
+}

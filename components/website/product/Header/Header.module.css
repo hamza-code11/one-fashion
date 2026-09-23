@@ -1,0 +1,50 @@
+/* components/website/shop/Header/Header.module.css */
+
+.header {
+  padding-top: var(--space-2);
+  margin-bottom: var(--space-8);
+}
+
+.breadcrumb {
+  display: inline-block;
+  color: var(--color-purple);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  text-decoration: none;
+  margin-bottom: var(--space-2);
+}
+
+.breadcrumb:hover {
+  text-decoration: underline;
+}
+
+.title {
+  color: var(--color-text-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(var(--text-5xl), 6vw, var(--text-7xl));
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: var(--leading-tight);
+  margin: 0 0 var(--space-3);
+}
+
+.description {
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  max-width: 60ch;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .header {
+    margin-bottom: var(--space-6);
+  }
+
+  .title {
+    font-size: clamp(var(--text-4xl), 9vw, var(--text-5xl));
+  }
+}

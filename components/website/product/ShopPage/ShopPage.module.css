@@ -1,0 +1,47 @@
+/* components/website/shop/ShopPage/ShopPage.module.css */
+
+.page {
+  width: 100%;
+  padding: var(--space-8) 0 var(--space-16);
+  font-family: var(--font-body);
+}
+
+.container {
+  width: min(
+    100% - (var(--container-padding) * 2),
+    var(--container-max-width)
+  );
+  margin: 0 auto;
+}
+
+/* ========================================
+   LAYOUT — sidebar + content (desktop)
+   collapses to single column (mobile/tablet)
+======================================== */
+
+.layout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-10);
+}
+
+.content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (max-width: 1180px) {
+  .layout {
+    gap: var(--space-6);
+  }
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: var(--space-6) 0 var(--space-12);
+  }
+
+  .layout {
+    gap: 0;
+  }
+}
