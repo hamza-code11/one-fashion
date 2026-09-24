@@ -1,4 +1,4 @@
-/* components/admin/newsletters/Newsletters.module.css */
+/* components/admin/collections/Collections.module.css */
 
 .page {
   display: flex;
@@ -40,23 +40,45 @@
   margin: 0;
 }
 
-/* ========================================
-   TOOLBAR
-======================================== */
-
-.toolbar {
-  display: flex;
+.addBtn {
+  display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: var(--space-4);
-  flex-wrap: wrap;
+  gap: var(--space-2);
+
+  padding: var(--space-3) var(--space-5);
+
+  background: var(--color-olive);
+  color: var(--color-white);
+
+  border: none;
+  border-radius: var(--radius-md);
+
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition: background var(--transition-normal), transform var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
+
+.addBtn:hover {
+  background: var(--color-black);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========================================
+   SEARCH
+======================================== */
 
 .searchWrap {
   position: relative;
   display: flex;
   align-items: center;
-  flex: 1 1 260px;
   max-width: 420px;
 }
 
@@ -138,23 +160,101 @@
   background: #fafaf8;
 }
 
-/* EMAIL */
-.emailText {
-  color: var(--color-text-primary);
-  font-weight: var(--font-medium);
-  word-break: break-all;
+/* IMAGE */
+.colImage {
+  width: 72px;
 }
 
-/* DATE */
-.colDate {
-  color: var(--color-text-secondary);
+.thumb {
+  position: relative;
+  width: 48px;
+  height: 60px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-cream);
+}
+
+.thumbImg {
+  object-fit: cover;
+}
+
+/* COLLECTION CELL */
+.collectionCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  max-width: 320px;
+}
+
+.collectionName {
+  font-weight: var(--font-semibold);
+  line-height: 1.3;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.collectionDesc {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  line-height: 1.3;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* SLUG */
+.colSlug {
+  width: 220px;
+}
+
+.slug {
+  display: inline-block;
+
+  padding: 2px 8px;
+
+  background: var(--color-cream);
+  color: var(--color-olive);
+
+  border-radius: var(--radius-sm);
+
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
   white-space: nowrap;
-  width: 160px;
+}
+
+/* COUNT */
+.colCount {
+  width: 100px;
+}
+
+.countBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 32px;
+  height: 26px;
+  padding: 0 var(--space-2);
+
+  background: var(--color-cream);
+  color: var(--color-text-primary);
+
+  border-radius: var(--radius-full);
+
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
 }
 
 /* ACTIONS */
 .colActions {
-  width: 80px;
+  width: 100px;
 }
 
 .actions {
@@ -183,6 +283,12 @@
     border-color var(--transition-fast);
 }
 
+.actionBtn:hover {
+  background: var(--color-cream);
+  color: var(--color-olive);
+  border-color: var(--color-cream);
+}
+
 .actionDanger:hover {
   background: rgba(182, 92, 51, 0.08);
   color: var(--color-orange);
@@ -203,10 +309,23 @@
    RESPONSIVE
 ======================================== */
 
+@media (max-width: 900px) {
+  .colSlug,
+  .colCount {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
-  .toolbar {
+  .header {
     flex-direction: column;
     align-items: stretch;
+    gap: var(--space-3);
+  }
+
+  .addBtn {
+    justify-content: center;
+    width: 100%;
   }
 
   .searchWrap {
@@ -218,9 +337,9 @@
     padding: var(--space-2) var(--space-3);
   }
 
-  .colDate {
-    width: auto;
-    font-size: var(--text-xs);
+  .thumb {
+    width: 40px;
+    height: 50px;
   }
 
   .actionBtn {
@@ -228,3 +347,4 @@
     height: 28px;
   }
 }
+

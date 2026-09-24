@@ -1,32 +1,15 @@
-// import Sidebar from "@/components/admin/Sidebar/Sidebar";
-// import Header from "@/components/admin/Header/Header";
+// app/admin/layout.tsx
+import AdminShell from '@/components/admin/layout/AdminShell/AdminShell';
 
-// export default function AdminLayout({
-//   children,
-// }: Readonly<{
-//   children: React.ReactNode;
-// }>) {
-//   return (
-//     <div className="admin-layout">
-//       <Sidebar />
-
-//       <div className="admin-content">
-//         <Header />
-
-//         <main>
-//           {children}
-//         </main>
-//       </div>
-//     </div>
-//   );
-// }
-
-
+export const metadata = {
+  title: {
+    default: 'Admin',
+    template: '%s | Admin — One + One',
+  },
+};
 
 export default function AdminLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return <>{children}</>;
+}: Readonly<{ children: React.ReactNode }>) {
+  return <AdminShell>{children}</AdminShell>;
 }

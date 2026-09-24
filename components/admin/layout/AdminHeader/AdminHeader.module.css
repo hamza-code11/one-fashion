@@ -1,0 +1,300 @@
+/* components/admin/AdminHeader.module.css */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+
+  height: 68px;
+  padding: 0 var(--space-6);
+
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ========================================
+   LEFT
+======================================== */
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.menuBtn {
+  display: none;                  /* desktop: hidden */
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  background: transparent;
+  color: var(--color-text-primary);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  cursor: pointer;
+
+  transition: background var(--transition-fast), color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.menuBtn:hover {
+  background: var(--color-cream);
+  color: var(--color-olive);
+  border-color: var(--color-cream);
+}
+
+.title {
+  color: var(--color-text-primary);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ========================================
+   RIGHT
+======================================== */
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* USER */
+.userWrap {
+  position: relative;
+}
+
+.userBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  padding: var(--space-1) var(--space-2) var(--space-1) var(--space-1);
+
+  background: transparent;
+  color: var(--color-text-primary);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+
+  cursor: pointer;
+
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.userBtn:hover {
+  background: var(--color-cream);
+  border-color: var(--color-cream);
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+
+  background: var(--color-olive);
+  color: #ffffff;
+  border-radius: var(--radius-full);
+
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  letter-spacing: 0.5px;
+}
+
+.userName {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  white-space: nowrap;
+  color: var(--color-text-primary);
+}
+
+.chevron {
+  color: var(--color-text-secondary);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+  color: var(--color-olive);
+}
+
+/* ========================================
+   USER MENU
+======================================== */
+
+.userMenu {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  z-index: 40;
+
+  min-width: 240px;
+
+  padding: var(--space-2);
+
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  animation: menuIn 160ms ease;
+}
+
+@keyframes menuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* menu header — avatar + name + email */
+.userMenuHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+
+  padding: var(--space-2) var(--space-3);
+}
+
+.userMenuAvatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+
+  background: var(--color-olive);
+  color: #ffffff;
+  border-radius: var(--radius-full);
+
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+}
+
+.userMenuInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.userMenuName {
+  color: var(--color-text-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  line-height: 1.2;
+}
+
+.userMenuEmail {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  line-height: 1.2;
+  word-break: break-all;
+}
+
+.userMenuDivider {
+  height: 1px;
+  background: var(--color-border);
+  margin: var(--space-1) 0;
+}
+
+/* menu items */
+.userMenuItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+
+  padding: var(--space-2) var(--space-3);
+
+  background: transparent;
+  color: var(--color-text-primary);
+
+  border: none;
+  border-radius: var(--radius-md);
+
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.userMenuItem:hover {
+  background: var(--color-cream);
+  color: var(--color-olive);
+}
+
+.logoutItem:hover {
+  background: rgba(182, 92, 51, 0.08);
+  color: var(--color-orange);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1024px) {
+  .menuBtn {
+    display: inline-flex;
+  }
+
+  .topbar {
+    padding: 0 var(--space-5);
+  }
+}
+
+@media (max-width: 720px) {
+  .userName {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar {
+    padding: 0 var(--space-4);
+    height: 62px;
+  }
+
+  .title {
+    font-size: var(--text-lg);
+  }
+
+  .userMenu {
+    min-width: 220px;
+  }
+}

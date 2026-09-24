@@ -1,0 +1,218 @@
+/* components/website/skeletons/AccountSkeleton/AccountSkeleton.module.css */
+
+.page {
+  padding: 40px 0 80px;
+  background: var(--color-background);
+  font-family: var(--font-body);
+}
+
+.container {
+  width: min(
+    100% - (var(--container-padding) * 2),
+    var(--container-max-width)
+  );
+  margin: 0 auto;
+}
+
+/* ========================================
+   SHIMMER BASE
+======================================== */
+
+.shimmer {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-border);
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ========================================
+   PAGE TITLE
+======================================== */
+
+.title {
+  height: 48px;
+  width: 320px;
+  max-width: 70%;
+  margin: 0 0 var(--space-10);
+}
+
+/* ========================================
+   LAYOUT
+======================================== */
+
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: clamp(var(--space-8), 5vw, var(--space-16));
+  align-items: start;
+}
+
+/* ========================================
+   SIDEBAR
+======================================== */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.userCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-cream);
+  border-radius: var(--radius-lg);
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background: var(--color-border);
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+  flex: 1;
+}
+
+.userName {
+  height: 12px;
+  width: 80%;
+}
+
+.userEmail {
+  height: 10px;
+  width: 95%;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.tab {
+  height: 42px;
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+
+.tabActive {
+  background: var(--color-text-primary);
+  opacity: 0.85;
+}
+
+.logoutBtn {
+  margin-top: var(--space-3);
+  height: 42px;
+  opacity: 0.5;
+}
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  min-width: 0;
+}
+
+.sectionHeading {
+  height: 28px;
+  width: 220px;
+  max-width: 60%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5) var(--space-6);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  height: 10px;
+  width: 40%;
+}
+
+.input {
+  height: 46px;
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+
+.saveBtn {
+  height: 50px;
+  width: 180px;
+  margin-top: var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+/* ========================================
+   RESPONSIVE — same breakpoints as real
+======================================== */
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 24px 0 56px;
+  }
+
+  .title {
+    height: 34px;
+    width: 240px;
+    margin-bottom: var(--space-8);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .saveBtn {
+    width: 100%;
+  }
+}
+

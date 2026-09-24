@@ -14,7 +14,7 @@ const navItems = [
   { label: 'HOME', href: '/' },
   { label: 'ABOUT', href: '/about' },
   { label: 'SHOP', href: '/product' },
-  { label: 'NEW ARRIVALS', href: '/shop/new-arrivals' },
+  { label: 'NEW ARRIVALS', href: '/new-arrivals' },
   { label: 'COLLECTIONS', href: '/collections' },
 ];
 
@@ -61,14 +61,21 @@ export default function Navbar() {
         </Link>
 
         <div className={styles.actions}>
-          {/* <button className={styles.iconButton} aria-label="Search">
+          {/* <Link
+            href="/search"
+            className={styles.iconButton}
+            aria-label="Search"
+          >
             <Search size={19} strokeWidth={1.6} />
-          </button> */}
+          </Link> */}
 
-          <button className={styles.iconButton} aria-label="Account">
+          <Link
+            href="/account"
+            className={styles.iconButton}
+            aria-label="Account"
+          >
             <UserRound size={19} strokeWidth={1.6} />
-          </button>
-
+          </Link>
           <Link
             href="/wishlist"
             className={styles.iconButton}

@@ -1,0 +1,128 @@
+/* components/admin/Pagination/Pagination.module.css */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+
+  padding: var(--space-5) 0 var(--space-2);
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* page number */
+.page {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 34px;
+  height: 34px;
+  padding: 0 var(--space-2);
+
+  background: var(--color-background);
+  color: var(--color-text-primary);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+
+  cursor: pointer;
+
+  transition: background var(--transition-fast), color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.page:hover:not(.pageActive) {
+  background: var(--color-cream);
+  color: var(--color-olive);
+  border-color: var(--color-cream);
+}
+
+.pageActive {
+  background: var(--color-olive);
+  color: var(--color-white);
+  border-color: var(--color-olive);
+  font-weight: var(--font-semibold);
+  cursor: default;
+}
+
+/* arrow */
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  background: var(--color-background);
+  color: var(--color-text-primary);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  cursor: pointer;
+
+  transition: background var(--transition-fast), color var(--transition-fast),
+    border-color var(--transition-fast), opacity var(--transition-fast);
+}
+
+.arrow:hover:not(:disabled) {
+  background: var(--color-cream);
+  color: var(--color-olive);
+  border-color: var(--color-cream);
+}
+
+.arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ellipsis */
+.ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 24px;
+  height: 34px;
+
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  user-select: none;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 480px) {
+  .page,
+  .arrow {
+    min-width: 30px;
+    height: 30px;
+    font-size: var(--text-xs);
+  }
+
+  .pagination {
+    gap: 4px;
+  }
+
+  .list {
+    gap: 2px;
+  }
+}
+

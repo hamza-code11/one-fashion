@@ -1,0 +1,331 @@
+/* components/website/collections/CollectionsPage.module.css */
+
+.page {
+  padding: 40px 0 80px;
+  background: var(--color-background);
+  font-family: var(--font-body);
+}
+
+.container {
+  width: min(
+    100% - (var(--container-padding) * 2),
+    var(--container-max-width)
+  );
+  margin: 0 auto;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.eyebrow {
+  color: var(--color-olive);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.title {
+  color: var(--color-text-primary);
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 3.5vw, var(--text-5xl));
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.description {
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  max-width: 62ch;
+  margin: 0;
+}
+
+/* ========================================
+   BENTO GRID — 3 columns × auto rows
+   Balanced spans, no tiny tiles
+======================================== */
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 240px;
+  gap: var(--space-4);
+}
+
+/* ========================================
+   TILE
+======================================== */
+
+.tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: var(--color-cream);
+  color: var(--color-white);
+  text-decoration: none;
+  isolation: isolate;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.tile:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--transition-slow);
+  z-index: 0;
+}
+
+.tile:hover .image {
+  transform: scale(1.06);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+  pointer-events: none;
+}
+
+/* ========================================
+   BADGE
+======================================== */
+
+.badge {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 2;
+
+  padding: 4px var(--space-3);
+
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-text-primary);
+
+  border-radius: var(--radius-full);
+
+  font-size: 10px;
+  font-weight: var(--font-bold);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+
+  padding: var(--space-5);
+}
+
+.name {
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-lg), 1.6vw, var(--text-2xl));
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.text {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  margin: 0;
+  max-width: 42ch;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  margin-top: var(--space-2);
+
+  color: var(--color-white);
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  transition: gap var(--transition-fast);
+}
+
+.cta svg {
+  transition: transform var(--transition-fast);
+}
+
+.tile:hover .cta svg {
+  transform: translateX(4px);
+}
+
+/* ========================================
+   BENTO SPANS — balanced layout
+   Row heights: 240px base
+   Pattern (3 columns wide):
+   ┌────────────┬──────┬──────┐
+   │            │  B   │  C   │
+   │     A      ├──────┴──────┤
+   │  (2×2)     │      D      │
+   ├────────────┤   (2 wide)  │
+   │  E  │  F   ├─────────────┤
+   │     │      │      G      │
+   ├─────┴──────┼─────────────┤
+   │      H (3 cols wide)     │
+   └──────────────────────────┘
+======================================== */
+
+/* A — big feature (2 cols × 2 rows) */
+.tile1 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* B — square */
+.tile2 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* C — square */
+.tile3 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* D — wide (2 cols) */
+.tile4 {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+/* E — tall (1 col × 2 rows) */
+.tile5 {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+/* F — square */
+.tile6 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* G — square */
+.tile7 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* H — full-width strip */
+.tile8 {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1024px) {
+  .bento {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 220px;
+    gap: var(--space-4);
+  }
+
+  /* A — still 2×2 feature */
+  .tile1 {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  /* all others collapse to 1×1 squares */
+  .tile2,
+  .tile3,
+  .tile4,
+  .tile5,
+  .tile6,
+  .tile7,
+  .tile8 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  /* E keeps a touch of height */
+  .tile5 {
+    grid-row: span 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 24px 0 56px;
+  }
+
+  .title {
+    font-size: var(--text-3xl);
+  }
+
+  .bento {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 240px;
+    gap: var(--space-3);
+  }
+
+  /* reset all spans */
+  .tile1,
+  .tile2,
+  .tile3,
+  .tile4,
+  .tile5,
+  .tile6,
+  .tile7,
+  .tile8 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  /* keep the feature a bit taller */
+  .tile1 {
+    grid-row: span 2;
+  }
+}

@@ -1,6 +1,6 @@
-import Navbar from "@/components/layout/Navbar/Navbar";
-import TopBar from "@/components/layout/TopBar/TopBar";
-import Footer from "@/components/layout/Footer/Footer";
+import Navbar from "@/components/website/layout/Navbar/Navbar";
+import TopBar from "@/components/website/layout/TopBar/TopBar";
+import Footer from "@/components/website/layout/Footer/Footer";
 
 export default function WebsiteLayout({
   children,

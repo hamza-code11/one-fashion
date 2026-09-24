@@ -4,7 +4,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Search, Trash2 } from 'lucide-react';
 import Pagination from '@/components/commen/Pagination/Pagination';
-import styles from './Newsletter.module.css';
+import styles from './Newsletters.module.css';
 
 /* =========================================================
    TYPES

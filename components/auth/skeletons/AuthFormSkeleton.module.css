@@ -1,0 +1,200 @@
+/* components/auth/skeletons/AuthFormSkeleton.module.css */
+
+.page {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  font-family: var(--font-body);
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+  padding: var(--space-6) var(--space-6) var(--space-5);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========================================
+   SHIMMER BASE
+======================================== */
+
+.shimmer {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-border);
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* BRAND */
+.brandRow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-1);
+}
+
+.brand {
+  width: 120px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+
+.title {
+  height: 26px;
+  width: 200px;
+}
+
+.subtitle {
+  height: 12px;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* FORM */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-1);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.labelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  height: 10px;
+  width: 80px;
+}
+
+.forgot {
+  height: 10px;
+  width: 50px;
+}
+
+.input {
+  height: 44px;
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+
+/* CHECKBOX */
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.checkbox {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-sm);
+}
+
+.checkboxLabel {
+  height: 10px;
+  width: 140px;
+}
+
+/* SUBMIT */
+.submit {
+  height: 42px;
+  width: 100%;
+  margin-top: var(--space-1);
+  border-radius: var(--radius-md);
+}
+
+/* FOOTER */
+.footer {
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: center;
+}
+
+.footerLine {
+  height: 10px;
+  width: 200px;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+  .card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: var(--space-5) var(--space-4);
+    border-radius: var(--radius-lg);
+  }
+
+  .brand {
+    width: 100px;
+    height: 36px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}
+
