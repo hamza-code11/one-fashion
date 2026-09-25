@@ -1,3 +1,5 @@
+// types/Product.ts — updated with slug
+
 export interface ProductColor {
   name: string;
   value: string;
@@ -6,6 +8,7 @@ export interface ProductColor {
 export interface Product {
   id: number;
   name: string;
+  slug: string;
   gender: string;
   category: string;
   rating: number;

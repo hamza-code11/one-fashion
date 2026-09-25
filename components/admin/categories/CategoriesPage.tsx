@@ -1,4 +1,4 @@
-// components/admin/products/ProductsPage.tsx
+// components/admin/categories/CategoriesPage.tsx
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
@@ -6,14 +6,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Plus, Search, Pencil, Trash2 } from 'lucide-react';
-import { products } from '@/data/products';
-import { Product } from '@/types/Product';
+import { categories as allCategories } from '@/data/categories';
+import { Category } from '@/types/Category';
 import Pagination from '@/components/commen/Pagination/Pagination';
-import styles from './ProductsPage.module.css';
+import styles from './Categories.module.css';
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 6;
 
-export default function ProductsPage() {
+export default function CategoriesPage() {
   const router = useRouter();
   const [query, setQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,13 +21,10 @@ export default function ProductsPage() {
   /* -------- filter -------- */
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return products;
+    if (!q) return allCategories;
 
-    return products.filter((p) =>
-      [p.name, p.category, p.gender, p.brand ?? '']
-        .join(' ')
-        .toLowerCase()
-        .includes(q)
+    return allCategories.filter((c) =>
+      [c.title, c.slug, c.description].join(' ').toLowerCase().includes(q)
     );
   }, [query]);
 
@@ -41,16 +38,16 @@ export default function ProductsPage() {
   const pageItems = filtered.slice(startIndex, startIndex + PAGE_SIZE);
 
   /* -------- handlers -------- */
-  const handleEdit = (product: Product) => {
-    router.push(`/admin/products/${product.id}/edit`);
+  const handleEdit = (category: Category) => {
+    router.push(`/admin/categories/${category.id}/edit`);
   };
 
-  const handleDelete = (product: Product) => {
+  const handleDelete = (category: Category) => {
     if (
       typeof window !== 'undefined' &&
-      window.confirm(`Delete "${product.name}"?`)
+      window.confirm(`Delete category "${category.title}"?`)
     ) {
-      console.log('Delete', product);
+      console.log('Delete', category);
     }
   };
 
@@ -59,28 +56,28 @@ export default function ProductsPage() {
       {/* HEADER */}
       <header className={styles.header}>
         <div className={styles.headerLeft}>
-          <h2 className={styles.title}>Products</h2>
+          <h2 className={styles.title}>Categories</h2>
           <p className={styles.subtitle}>
-            {filtered.length} {filtered.length === 1 ? 'product' : 'products'} in
-            your catalog.
+            {filtered.length}{' '}
+            {filtered.length === 1 ? 'category' : 'categories'} in your catalog.
           </p>
         </div>
 
-        <Link href="/admin/products/new" className={styles.addBtn}>
+        <Link href="/admin/categories/new" className={styles.addBtn}>
           <Plus size={16} strokeWidth={2.2} />
-          Add Product
+          Add Category
         </Link>
       </header>
 
-      {/* SEARCH BAR */}
+      {/* SEARCH */}
       <div className={styles.searchWrap}>
         <Search size={16} strokeWidth={1.8} className={styles.searchIcon} />
         <input
           type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search by name, category, gender…"
-          aria-label="Search products"
+          placeholder="Search categories…"
+          aria-label="Search categories"
           className={styles.searchInput}
         />
       </div>
@@ -88,7 +85,7 @@ export default function ProductsPage() {
       {/* TABLE */}
       {pageItems.length === 0 ? (
         <div className={styles.empty}>
-          <p>No products match your search.</p>
+          <p>No categories match your search.</p>
         </div>
       ) : (
         <div className={styles.tableWrap}>
@@ -96,23 +93,20 @@ export default function ProductsPage() {
             <thead>
               <tr>
                 <th className={styles.colImage}>Image</th>
-                <th>Product</th>
-                <th className={styles.colCategory}>Category</th>
-                <th className={styles.colGender}>Gender</th>
-                <th className={styles.colPrice}>Price</th>
-                <th className={styles.colStatus}>Status</th>
+                <th>Category</th>
+                <th className={styles.colSlug}>Slug</th>
                 <th className={styles.colActions}>Actions</th>
               </tr>
             </thead>
 
             <tbody>
-              {pageItems.map((p) => (
-                <tr key={p.id}>
+              {pageItems.map((c) => (
+                <tr key={c.id}>
                   <td className={styles.colImage}>
                     <div className={styles.thumb}>
                       <Image
-                        src={p.image}
-                        alt={p.name}
+                        src={c.image}
+                        alt={c.title}
                         fill
                         sizes="56px"
                         className={styles.thumbImg}
@@ -121,44 +115,14 @@ export default function ProductsPage() {
                   </td>
 
                   <td>
-                    <div className={styles.productCell}>
-                      <span className={styles.productName}>{p.name}</span>
-                      <span className={styles.productBrand}>{p.brand}</span>
+                    <div className={styles.catCell}>
+                      <span className={styles.catName}>{c.title}</span>
+                      <span className={styles.catDesc}>{c.description}</span>
                     </div>
                   </td>
 
-                  <td className={styles.colCategory}>{p.category}</td>
-                  <td className={styles.colGender}>{p.gender}</td>
-
-                  <td className={styles.colPrice}>
-                    <div className={styles.priceCell}>
-                      <span className={styles.price}>
-                        PKR {p.price.toLocaleString()}
-                      </span>
-                      {p.oldPrice && (
-                        <span className={styles.oldPrice}>
-                          PKR {p.oldPrice.toLocaleString()}
-                        </span>
-                      )}
-                    </div>
-                  </td>
-
-                  <td className={styles.colStatus}>
-                    {p.badge ? (
-                      <span
-                        className={`${styles.badge} ${
-                          p.badge === 'NEW'
-                            ? styles.badgeNew
-                            : p.badge === 'SALE'
-                            ? styles.badgeSale
-                            : styles.badgeHot
-                        }`}
-                      >
-                        {p.badge}
-                      </span>
-                    ) : (
-                      <span className={styles.badgeMuted}>—</span>
-                    )}
+                  <td className={styles.colSlug}>
+                    <code className={styles.slug}>{c.slug}</code>
                   </td>
 
                   <td className={styles.colActions}>
@@ -166,8 +130,9 @@ export default function ProductsPage() {
                       <button
                         type="button"
                         className={styles.actionBtn}
-                        onClick={() => handleEdit(p)}
-                        aria-label={`Edit ${p.name}`}
+                        onClick={() => handleEdit(c)}
+                        aria-label={`Edit ${c.title}`}
+                        title="Edit"
                       >
                         <Pencil size={15} strokeWidth={1.8} />
                       </button>
@@ -175,8 +140,9 @@ export default function ProductsPage() {
                       <button
                         type="button"
                         className={`${styles.actionBtn} ${styles.actionDanger}`}
-                        onClick={() => handleDelete(p)}
-                        aria-label={`Delete ${p.name}`}
+                        onClick={() => handleDelete(c)}
+                        aria-label={`Delete ${c.title}`}
+                        title="Delete"
                       >
                         <Trash2 size={15} strokeWidth={1.8} />
                       </button>

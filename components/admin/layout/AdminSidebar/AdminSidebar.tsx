@@ -17,6 +17,7 @@ import {
   FileText,
   LogOut,
   X,
+  Ruler
 } from 'lucide-react';
 import styles from './AdminSidebar.module.css';
 
@@ -44,6 +45,7 @@ const NAV_SECTIONS: NavSection[] = [
       { label: 'Categories', href: '/admin/categories', Icon: Tags },
       { label: 'Brands', href: '/admin/brands', Icon: Award },
       { label: 'Collections', href: '/admin/collections', Icon: Layers },
+      { label: 'Size Guide', href: '/admin/size-guide', Icon: Ruler },
     ],
   },
   {

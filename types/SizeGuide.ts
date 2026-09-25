@@ -7,6 +7,7 @@ export interface MeasurementGuide {
 }
 
 export interface SizeChartRow {
+  id: number;
   size: string;
   height: string;
   weight: string;

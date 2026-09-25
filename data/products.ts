@@ -4,6 +4,7 @@ export const products: Product[] = [
   {
     id: 1,
     name: 'Floral Cotton Frock',
+    slug: 'floral-cotton-frock',
     gender: 'Girls',
     category: 'Frocks & Dresses',
     rating: 4.9,
@@ -40,6 +41,7 @@ export const products: Product[] = [
   {
     id: 2,
     name: 'Embroidered Party Dress',
+    slug: 'embroidered-party-dress',
     gender: 'Girls',
     category: 'Frocks & Dresses',
     rating: 5.0,
@@ -75,6 +77,7 @@ export const products: Product[] = [
   {
     id: 3,
     name: 'Printed Co-ord Set',
+    slug: 'printed-Co-ord-set',
     gender: 'Girls',
     category: 'Co-ord Sets',
     rating: 4.7,
@@ -110,6 +113,7 @@ export const products: Product[] = [
   {
     id: 4,
     name: 'Girls Denim Jacket',
+    slug: 'girls-denim-jacket',
     gender: 'Girls',
     category: 'Jackets & Cardigans',
     rating: 4.8,
@@ -143,6 +147,7 @@ export const products: Product[] = [
   {
     id: 5,
     name: 'Cotton Bodysuit Set',
+    slug: 'cotton-bodysuit-set',
     gender: 'Baby',
     category: 'Bodysuits & Rompers',
     rating: 4.9,
@@ -176,6 +181,7 @@ export const products: Product[] = [
   {
     id: 6,
     name: 'Striped T-Shirt',
+    slug: 'striped-t-Shirt',
     gender: 'Boys',
     category: 'T-Shirts & Polos',
     rating: 4.5,
@@ -211,6 +217,7 @@ export const products: Product[] = [
   {
     id: 7,
     name: 'Knitted Cardigan',
+    slug: 'knitted-cardigan',
     gender: 'Girls',
     category: 'Jackets & Cardigans',
     rating: 4.7,
@@ -247,6 +254,7 @@ export const products: Product[] = [
   {
     id: 8,
     name: 'Corduroy Pants',
+    slug: 'corduroy-pants',
     gender: 'Boys',
     category: 'Pants & Bottoms',
     rating: 4.4,
@@ -283,6 +291,7 @@ export const products: Product[] = [
   {
     id: 9,
     name: 'Classic Polo Shirt',
+    slug: 'classic-polo-shirt',
     gender: 'Boys',
     category: 'T-Shirts & Polos',
     rating: 4.8,
@@ -319,6 +328,7 @@ export const products: Product[] = [
   {
     id: 10,
     name: 'Floral Summer Dress',
+    slug: 'floral-summer-dress',
     gender: 'Girls',
     category: 'Frocks & Dresses',
     rating: 4.9,
